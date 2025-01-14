@@ -1,10 +1,8 @@
 package jm.task.core.jdbc.dao;
-
 import jm.task.core.jdbc.model.User;
 import jm.task.core.jdbc.util.Util;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -16,13 +14,6 @@ public class UserDaoHibernateImpl implements UserDao {
 
     public UserDaoHibernateImpl() {
 
-    }
-
-    public void close() {
-        if (factory != null) {
-            factory.close();
-            logger.info("SessionFactory закрыт.");
-        }
     }
 
     @Override
