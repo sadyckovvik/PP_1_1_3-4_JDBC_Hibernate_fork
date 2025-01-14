@@ -16,14 +16,14 @@ public class Util {
     private static final String PASSWORD = "root";
     private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
 
-    public static Connection getConnection() throws SQLException {
-        try {
-            Class.forName(DRIVER);
-        } catch (ClassNotFoundException e) {
-            System.err.println("Не удалось зарегистрировать драйвер: " + e.getMessage());
-        }
-        return DriverManager.getConnection(URL, USERNAME, PASSWORD);
-    }
+//    public static Connection getConnection() throws SQLException {
+//        try {
+//            Class.forName(DRIVER);
+//        } catch (ClassNotFoundException e) {
+//            System.err.println("Не удалось зарегистрировать драйвер: " + e.getMessage());
+//        }
+//        return DriverManager.getConnection(URL, USERNAME, PASSWORD);
+//    }
 
     private static Configuration createConfiguration() {
         Configuration configuration = new Configuration();
