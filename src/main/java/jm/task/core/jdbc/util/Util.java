@@ -38,7 +38,7 @@ public class Util {
         settings.put(Environment.DIALECT, "org.hibernate.dialect.MySQL8Dialect");
         settings.put(Environment.SHOW_SQL, "true");
 //Hibernate будет выводить SQL-запросы в консоль
-        settings.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");
+//        settings.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");
 //Значение "thread" означает, что сессия будет привязана к текущему потоку (thread)
         settings.put(Environment.HBM2DDL_AUTO, "");
 //Пустое значение ("") означает, что Hibernate не будет автоматически управлять схемой базы данных.
@@ -68,5 +68,11 @@ public class Util {
             }
         }
         return sessionFactory;
+    }
+
+    public static void closeSessionFactory() {
+        if (sessionFactory != null) {
+            sessionFactory.close();
+        }
     }
 }
