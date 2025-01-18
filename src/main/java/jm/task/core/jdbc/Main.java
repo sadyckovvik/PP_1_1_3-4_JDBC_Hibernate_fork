@@ -1,5 +1,6 @@
 package jm.task.core.jdbc;
 import jm.task.core.jdbc.service.UserServiceImpl;
+import jm.task.core.jdbc.util.Util;
 
 public class Main {
     public static void main(String[] args) {
@@ -10,17 +11,21 @@ public class Main {
         // 4. Очистка таблицы User(ов)
         // 5. Удаление таблицы
         UserServiceImpl userService = new UserServiceImpl();
-        userService.createUsersTable();
-        userService.saveUser("Vitya", "Sadykov", (byte) 28);
-        System.out.printf("User с именем — %s добавлен в базу данных\n", "Vitya");
-        userService.saveUser("Vadim", "Sergienko", (byte) 27);
-        System.out.printf("User с именем — %s добавлен в базу данных\n", "Vadim");
-        userService.saveUser("Pavel", "Alliluev", (byte) 26);
-        System.out.printf("User с именем — %s добавлен в базу данных\n", "Pavel");
-        userService.saveUser("Eliza", "Telenkova", (byte) 26);
-        System.out.printf("User с именем — %s добавлен в базу данных\n", "Eliza");
-        System.out.println(userService.getAllUsers());
-        userService.cleanUsersTable();
-        userService.dropUsersTable();
+        try {
+            userService.createUsersTable();
+            userService.saveUser("Vitya", "Sadykov", (byte) 28);
+            System.out.printf("User с именем — %s добавлен в базу данных\n", "Vitya");
+            userService.saveUser("Vadim", "Sergienko", (byte) 27);
+            System.out.printf("User с именем — %s добавлен в базу данных\n", "Vadim");
+            userService.saveUser("Pavel", "Alliluev", (byte) 26);
+            System.out.printf("User с именем — %s добавлен в базу данных\n", "Pavel");
+            userService.saveUser("Eliza", "Telenkova", (byte) 26);
+            System.out.printf("User с именем — %s добавлен в базу данных\n", "Eliza");
+            System.out.println(userService.getAllUsers());
+            userService.cleanUsersTable();
+            userService.dropUsersTable();
+        } finally {
+            Util.closeSessionFactory();
+        }
     }
 }
